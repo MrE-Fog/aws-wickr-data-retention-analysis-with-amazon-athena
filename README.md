@@ -34,13 +34,13 @@ The following diagram illustrates the resources deployed
 
 ![architecture](images/architecture.png?raw=true)
  
-Retention data is first streamed via the Amazon Kinesis Agent to an Amazon S3 bucket once a new message is added to the retention message file. From there, you will use an AWS Glue crawler to create a table based on the retention data fields, and finally used Amazon Athena to query that data. Additionally, raw retention data is sent to a separate S3 bucket once the retention file reaches 1KB in size.
+AWS Wickr retention data is first streamed via the Amazon Kinesis Agent to an Amazon S3 bucket once a new message is added to the retention message file. From there, you will use an AWS Glue crawler to create a table based on the retention data fields, and finally used Amazon Athena to query that data. Additionally, raw retention data is sent to a separate S3 bucket once the retention file reaches 1KB in size.
 
 ## Tools
 
 - The AWS Wickr Client - Installation instructions sent on invite email.
 
-## Configure the AWS Wickr retention Service
+## Configure AWS Wickr Data Retention
 
 1. Clone this repo and in the same folder as `cloudformation.yaml` run the following add the `--region` flag to deploy to an alternate region from your default:
 ```
@@ -58,7 +58,7 @@ docker run -v /opt/<compliance_bot_username>:/tmp/<compliance_bot_username> -d -
 8. Now to ensure the service has started correctly, run `docker ps -a` and copy the Container ID, then run `docker logs <container_ID`. You should see Login Successful and a new password. 
 9. Repeat step 2 and 3, and replace the initial password with this new one. This will be used if you restart the retention service.
 10. Go to the AWS Wickr Network admin pane, under **'Data Retention'** and ensure you now have a green tick at the bottom, then switch the toggle at the bottom to on.
-12. The Data retention title at the top of the page will now have a green Active icon next to it. You are now running Data retention for your network.
+12. The **data retention** title at the top of the page will now have a green Active icon next to it. You are now running Data retention for your network.
 
 ## Configure the Amazon Kinesis Data Firehose Agent
 
